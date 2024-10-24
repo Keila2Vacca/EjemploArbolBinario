@@ -1,60 +1,65 @@
-
 package com.mycompany.arbolbinario;
 
+import javax.swing.JOptionPane;
+
 public class Nodo {
-    String autor;
-    private String titulo;
-    private String tema;
-    private Nodo izquierda;
-    private Nodo derecha;
 
-    public Nodo(String autor, String titulo, String tema) {
-        this.autor = autor;
-        this.titulo = titulo;
-        this.tema = tema;
-        this.izquierda = null;
-        this.derecha = null;
+    private int valor;
+    private Nodo nodoIzq;
+    private Nodo nodoDerecho;
+
+    public Nodo(int valor) {
+        this.valor = valor;
+        this.nodoIzq = null;
+        this.nodoDerecho = null;
     }
 
-    public String getAutor() {
-        return autor;
+    public int getValor() {
+        return valor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public Nodo getNodoIzq() {
+        return nodoIzq;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNodoIzq(Nodo nodoIzq) {
+        this.nodoIzq = nodoIzq;
     }
 
-    public String getTema() {
-        return tema;
+    public Nodo getNodoDerecho() {
+        return nodoDerecho;
     }
 
-    public void setTema(String tema) {
-        this.tema = tema;
+    public void setNodoDerecho(Nodo nodoDerecho) {
+        this.nodoDerecho = nodoDerecho;
     }
 
-    public Nodo getIzquierda() {
-        return izquierda;
-    }
+    //Funcion para agtregar un nodo a la derecha si es mayor y a la izquierda si es menor
+    public void insertar(int _valor) {
+        //if para comprobar que el valor no se repita
+        if (_valor == this.valor) {
+            JOptionPane.showMessageDialog(null, "Ese numero ya esta en el arbol");
+            return;
+        }
 
-    public void setIzquierda(Nodo izquierda) {
-        this.izquierda = izquierda;
+        if (_valor < this.valor) {
+            //Insertar en lado izquierdo
+            if (this.nodoIzq == null) {
+                this.nodoIzq = new Nodo(_valor);
+            } else {
+                this.nodoIzq.insertar(_valor);
+            }
+        } else {
+            //Insertar en lado derecho
+            if (this.nodoDerecho == null) {
+                this.nodoDerecho = new Nodo(_valor);
+            } else {
+                this.nodoDerecho.insertar(_valor);
+            }
+        }
     }
-
-    public Nodo getDerecha() {
-        return derecha;
-    }
-
-    public void setDerecha(Nodo derecha) {
-        this.derecha = derecha;
-    }
-
-    
 }
