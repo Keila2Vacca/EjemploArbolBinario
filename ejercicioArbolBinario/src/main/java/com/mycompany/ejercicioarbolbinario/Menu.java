@@ -17,6 +17,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         add = new javax.swing.JButton();
         search = new javax.swing.JButton();
+        preOrder = new javax.swing.JButton();
+        inOrder = new javax.swing.JButton();
+        postOrder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,6 +39,27 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        preOrder.setText("PreOrden");
+        preOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                preOrderActionPerformed(evt);
+            }
+        });
+
+        inOrder.setText("InOrder");
+        inOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inOrderActionPerformed(evt);
+            }
+        });
+
+        postOrder.setText("PostOrder");
+        postOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,11 +70,22 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(112, 112, 112)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(add)
-                        .addGap(83, 83, 83)
-                        .addComponent(search)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(preOrder)
+                            .addComponent(add))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(search))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(postOrder)
+                                .addGap(43, 43, 43))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(inOrder)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,7 +96,13 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add)
                     .addComponent(search))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(preOrder)
+                    .addComponent(postOrder))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(inOrder)
+                .addGap(79, 79, 79))
         );
 
         pack();
@@ -104,6 +145,18 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchActionPerformed
 
+    private void preOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preOrderActionPerformed
+        arbol.recorrerPreOrden();
+    }//GEN-LAST:event_preOrderActionPerformed
+
+    private void inOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inOrderActionPerformed
+        arbol.recorrerInOrden();
+    }//GEN-LAST:event_inOrderActionPerformed
+
+    private void postOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postOrderActionPerformed
+        arbol.recorrerPostOrden();
+    }//GEN-LAST:event_postOrderActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -116,7 +169,10 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton inOrder;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton postOrder;
+    private javax.swing.JButton preOrder;
     private javax.swing.JButton search;
     // End of variables declaration//GEN-END:variables
 }

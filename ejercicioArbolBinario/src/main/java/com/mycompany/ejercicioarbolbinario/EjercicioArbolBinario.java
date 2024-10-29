@@ -55,4 +55,42 @@ public class EjercicioArbolBinario {
         }
         return buscarRecursivo(actual.getDerecha(), caracteristica, valor);
     }
+    
+    public void recorrerInOrden() {
+        System.out.println("Recorrido en orden:");
+        recorrerInOrdenRecursivo(raiz);
+    }
+
+    private void recorrerInOrdenRecursivo(Nodo nodo) {
+        if (nodo != null) {
+            recorrerInOrdenRecursivo(nodo.izquierdo);
+            System.out.println(nodo.producto);
+            recorrerInOrdenRecursivo(nodo.derecho);
+        }
+    }
+
+    public void recorrerPreOrden() {
+        System.out.println("Recorrido en preorden:");
+        recorrerPreOrdenRecursivo(raiz);
+    }
+private void recorrerPreOrdenRecursivo(Nodo nodo) {
+        if (nodo != null) {
+            System.out.println(nodo.producto);
+            recorrerPreOrdenRecursivo(nodo.izquierdo);
+            recorrerPreOrdenRecursivo(nodo.derecho);
+        }
+    }
+
+    public void recorrerPostOrden() {
+        System.out.println("Recorrido en postorden:");
+        recorrerPostOrdenRecursivo(raiz);
+    }
+
+    private void recorrerPostOrdenRecursivo(Nodo nodo) {
+        if (nodo != null) {
+            recorrerPostOrdenRecursivo(nodo.izquierdo);
+            recorrerPostOrdenRecursivo(nodo.derecho);
+            System.out.println(nodo.producto);
+        }
+    }
 }
