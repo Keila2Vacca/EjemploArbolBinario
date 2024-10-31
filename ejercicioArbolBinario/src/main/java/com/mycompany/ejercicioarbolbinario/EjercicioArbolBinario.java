@@ -37,25 +37,25 @@ public class EjercicioArbolBinario {
     }
 
     // Método para buscar productos similares en el árbol
-    public ListaProductos buscarProductosSimilares(String caracteristica, String valor) {
-        return buscarRecursivo(raiz, caracteristica, valor);
+    public ListaProductos buscarProductosSimilares(String caracteristica) {
+        return buscarRecursivo(raiz, caracteristica);
     }
 
     // Método recursivo para buscar productos similares en el árbol
-    private ListaProductos buscarRecursivo(Nodo actual, String caracteristica, String valor) {
+    private ListaProductos buscarRecursivo(Nodo actual, String caracteristica) {
         if (actual == null) {
             return null;
         }
-        if (actual.getCaracteristica().equals(caracteristica) && actual.getValor().equals(valor)) {
+        if (actual.getCaracteristica().equals(caracteristica)) {
             return actual.getProductos();
         }
-        ListaProductos resultado = buscarRecursivo(actual.getIzquierda(), caracteristica, valor);
+        ListaProductos resultado = buscarRecursivo(actual.getIzquierda(), caracteristica);
         if (resultado != null) {
             return resultado;
         }
-        return buscarRecursivo(actual.getDerecha(), caracteristica, valor);
+        return buscarRecursivo(actual.getDerecha(), caracteristica);
     }
-    
+
     public void recorrerInOrden() {
         System.out.println("Recorrido en orden:");
         recorrerInOrdenRecursivo(raiz);
@@ -63,9 +63,9 @@ public class EjercicioArbolBinario {
 
     private void recorrerInOrdenRecursivo(Nodo nodo) {
         if (nodo != null) {
-            recorrerInOrdenRecursivo(nodo.izquierdo);
-            System.out.println(nodo.producto);
-            recorrerInOrdenRecursivo(nodo.derecho);
+            recorrerInOrdenRecursivo(nodo.getIzquierda());
+            System.out.println(nodo.getProductos());
+            recorrerInOrdenRecursivo(nodo.getDerecha());
         }
     }
 
@@ -73,11 +73,12 @@ public class EjercicioArbolBinario {
         System.out.println("Recorrido en preorden:");
         recorrerPreOrdenRecursivo(raiz);
     }
-private void recorrerPreOrdenRecursivo(Nodo nodo) {
+
+    private void recorrerPreOrdenRecursivo(Nodo nodo) {
         if (nodo != null) {
-            System.out.println(nodo.producto);
-            recorrerPreOrdenRecursivo(nodo.izquierdo);
-            recorrerPreOrdenRecursivo(nodo.derecho);
+            System.out.println(nodo.getProductos());
+            recorrerPreOrdenRecursivo(nodo.getIzquierda());
+            recorrerPreOrdenRecursivo(nodo.getDerecha());
         }
     }
 
@@ -88,9 +89,9 @@ private void recorrerPreOrdenRecursivo(Nodo nodo) {
 
     private void recorrerPostOrdenRecursivo(Nodo nodo) {
         if (nodo != null) {
-            recorrerPostOrdenRecursivo(nodo.izquierdo);
-            recorrerPostOrdenRecursivo(nodo.derecho);
-            System.out.println(nodo.producto);
+            recorrerPostOrdenRecursivo(nodo.getIzquierda());
+            recorrerPostOrdenRecursivo(nodo.getDerecha());
+            System.out.println(nodo.getProductos());
         }
     }
 }

@@ -125,10 +125,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         String caracteristica = JOptionPane.showInputDialog(this, "Ingrese la característica para buscar:");
-        String valor = JOptionPane.showInputDialog(this, "Ingrese el valor para buscar:");
 
-        if (caracteristica != null && valor != null) {
-            ListaProductos productosSimilares = arbol.buscarProductosSimilares(caracteristica, valor);
+        if (caracteristica != null) {
+            ListaProductos productosSimilares = arbol.buscarProductosSimilares(caracteristica);
             if (productosSimilares != null && productosSimilares.getTamaño() > 0) {
                 StringBuilder resultado = new StringBuilder("Productos encontrados:\n");
                 for (NodoProducto producto : productosSimilares.getProductos()) {
